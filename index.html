@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Happy Birthday Disha 💖</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#38243d}
+body{
+  overflow-x:hidden;
+  background:linear-gradient(120deg,#ffd6ea,#dcd6ff,#c9f4ff,#ffe0c2);
+  background-size:400% 400%;animation:bg 12s ease infinite;
+}
+@keyframes bg{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+body:before,body:after{content:"";position:fixed;width:280px;height:280px;border-radius:50%;filter:blur(55px);opacity:.55;z-index:-1;animation:blob 8s ease-in-out infinite alternate}
+body:before{background:#ff70b7;left:-90px;top:8%}
+body:after{background:#7ddcff;right:-100px;bottom:5%;animation-delay:2s}
+@keyframes blob{to{transform:translate(70px,-40px) scale(1.25)}}
+
+.screen{min-height:100vh;display:none;place-items:center;padding:25px;text-align:center;position:relative}
+.screen.active{display:grid;animation:show .7s ease}
+@keyframes show{from{opacity:0;transform:scale(.96) translateY(15px)}to{opacity:1;transform:none}}
+
+.card{
+  width:min(720px,94vw);padding:42px 27px;border-radius:34px;
+  background:rgba(255,255,255,.73);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 25px 80px rgba(105,55,115,.18);
+  position:relative;overflow:hidden;
+}
+.card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#fff;opacity:.22;right:-70px;top:-70px}
+.small{font-size:.82rem;letter-spacing:.16em;font-weight:800;color:#a15d92}
+.title{font-size:clamp(2.5rem,9vw,5.6rem);line-height:.98;margin:15px 0 18px}
+.gradient{background:linear-gradient(90deg,#ff4f9a,#9a64ff,#25bde8);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{font-size:1.08rem;line-height:1.75;margin:12px auto;max-width:600px}
+.btn{
+  border:0;border-radius:999px;padding:15px 28px;margin-top:18px;
+  background:linear-gradient(90deg,#ff4f9a,#a15cff);color:#fff;
+  font-weight:800;font-size:1rem;cursor:pointer;
+  box-shadow:0 12px 30px rgba(190,73,154,.28);transition:.25s;
+}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn.alt{background:rgba(255,255,255,.8);color:#9b4c91;border:1px solid #fff}
+
+.giftWrap{position:relative;width:170px;height:170px;margin:18px auto 5px;display:grid;place-items:center}
+.gift{font-size:7.2rem;cursor:pointer;filter:drop-shadow(0 15px 15px rgba(120,45,100,.2));animation:gift 1.7s ease-in-out infinite}
+@keyframes gift{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-16px) rotate(2deg)}}
+.tap{font-weight:800;color:#8f5789}
+
+.floaters{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1}
+.f{position:absolute;font-size:22px;animation:rise linear infinite;opacity:.65}
+@keyframes rise{from{transform:translateY(110vh) rotate(0)}to{transform:translateY(-15vh) rotate(360deg)}}
+
+.reasons{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:25px 0}
+.reason{padding:21px;border-radius:23px;background:rgba(255,255,255,.68);text-align:left;border:1px solid rgba(255,255,255,.9);transition:.25s}
+.reason:hover{transform:translateY(-5px) rotate(.5deg);box-shadow:0 15px 30px rgba(110,60,120,.12)}
+.reason b{display:block;font-size:1.05rem;margin-bottom:6px}
+
+.message{padding:20px;border-radius:25px;background:linear-gradient(135deg,rgba(255,110,177,.12),rgba(124,107,255,.12));margin:20px 0}
+.heart{font-size:3rem;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{transform:scale(1.2)}}
+
+#confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.piece{position:absolute;width:9px;height:17px;border-radius:3px;animation:fall 3.2s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(900deg);opacity:0}}
+
+.music{
+  position:fixed;right:15px;bottom:15px;z-index:30;
+  border:1px solid rgba(255,255,255,.9);background:rgba(255,255,255,.72);
+  backdrop-filter:blur(12px);padding:10px 15px;border-radius:999px;
+  font-weight:800;color:#8d4c88;display:none;box-shadow:0 10px 25px #00000012
+}
+.music.on{display:block}
+@media(max-width:560px){.reasons{grid-template-columns:1fr}.card{padding:34px 19px}.title{font-size:clamp(2.4rem,14vw,4rem)}}
+</style>
+</head>
+<body>
+<div class="floaters" id="floaters"></div>
+<div id="confetti"></div>
+<button class="music" id="musicBtn" onclick="toggleMusic()">🎵 Music On</button>
+<audio id="song" preload="auto" loop>
+  <source src="Disha.mp3" type="audio/mpeg">
+</audio>
+
+<section class="screen active" id="s1">
+  <div class="card">
+    <div class="small">✨ EK CHHOTU SA SURPRISE ✨</div>
+    <h1 class="title">Hey <span class="gradient">Disha</span> 🎀</h1>
+    <p>Okay madam 😭💗 kuch zyada hi special banane ka mann kar gaya...</p>
+    <p>Bas ek cute sa birthday surprise hai. Pehle <b>open</b> toh karo 👀</p>
+    <button class="btn" onclick="next(2)">Open B'day Gift 🎁</button>
+  </div>
+</section>
+
+<section class="screen" id="s2">
+  <div class="card">
+    <div class="small">🎁 YE WALA ACTUALLY OPEN KARNA HAI</div>
+    <div class="giftWrap">
+      <div class="gift" onclick="openGift()">🎁</div>
+    </div>
+    <h2>Gift pe tap karo Disha 👀</h2>
+    <p>Jaise hi khologe, ek chhota sa surprise + birthday song bhi chalega 🎶💖</p>
+    <div class="tap">👇 TAP THE GIFT 👇</div>
+  </div>
+</section>
+
+<section class="screen" id="s3">
+  <div class="card">
+    <div class="small">💫 THODA SA CONTEXT</div>
+    <h1 class="title">Ek saal ho gaya? 😭</h1>
+    <p>Socha nahi tha ki ek random online meeting se itni achhi friendship ban jayegi.</p>
+    <p>Haan, online hi mile the, but time ke saath tu ek normal online person se <b>thodi zyada important friend</b> ban gayi. 🫶</p>
+    <p>Random chats, bakchodi, serious talks — sab apni jagah yaad rehne wale hain. 😂</p>
+    <button class="btn" onclick="next(4)">Aage bhi hai 👀 →</button>
+  </div>
+</section>
+
+<section class="screen" id="s4">
+  <div class="card">
+    <div class="small">🌷 WHY YOU'RE ACTUALLY COOL</div>
+    <h1>Reasons? Thode toh hain 😌</h1>
+    <div class="reasons">
+      <div class="reason">🌸 <b>Easy to talk to</b> Tere saath baat karna unnecessarily awkward nahi hota.</div>
+      <div class="reason">😂 <b>Random level alag hai</b> Kabhi-kabhi conversation ka koi logic hi nahi hota. 😂</div>
+      <div class="reason">🫶 <b>Good vibes</b> Online hoke bhi somehow mood better kar deti hai.</div>
+      <div class="reason">✨ <b>Bas tu tu hai</b> Aur honestly, wahi kaafi hai.</div>
+    </div>
+    <button class="btn" onclick="next(5)">Final message 💌</button>
+  </div>
+</section>
+
+<section class="screen" id="s5">
+  <div class="card">
+    <div class="heart">💗</div>
+    <div class="small">FOR YOU, DISHA</div>
+    <h1 class="title"><span class="gradient">Happy Birthday</span> 🎂</h1>
+    <div class="message">
+      <p>Bas wish karta hoon ki tera ye new year of life mast jaye — lots of happiness, peace, good people aur bahut saari reasons to smile. ✨</p>
+      <p>Jo bhi goals hain, ek-ek karke sab complete ho. Aur haan, unnecessary tension thodi kam lena. 😭</p>
+      <p>Honestly, I'm glad ki ek random online meeting friendship mein convert ho gayi. 🫶</p>
+      <p><b>Have a beautiful birthday, Disha. Enjoy your dayyy! 🎀🎂💖</b></p>
+    </div>
+    <button class="btn" onclick="celebrate()">Disha ka Birthday Celebrate Karein 🎉</button>
+  </div>
+</section>
+
+<script>
+const song=document.getElementById("song");
+const musicBtn=document.getElementById("musicBtn");
+
+function next(n){
+  document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+  document.getElementById("s"+n).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function openGift(){
+  song.currentTime=0;
+  song.play().catch(()=>{});
+  musicBtn.classList.add("on");
+  next(3);
+  miniBurst();
+}
+
+function toggleMusic(){
+  if(song.paused){song.play();musicBtn.textContent="🎵 Music On";}
+  else{song.pause();musicBtn.textContent="🔇 Music Off";}
+}
+
+function miniBurst(){
+  const box=document.getElementById("confetti");
+  for(let i=0;i<35;i++){
+    const e=document.createElement("i");
+    e.className="piece";
+    e.style.left=(45+Math.random()*10)+"%";
+    e.style.top="42%";
+    e.style.background=["#ff4f9a","#9a64ff","#25bde8","#ffd34d","#65d68a"][i%5];
+    e.style.animationDelay=(Math.random()*.35)+"s";
+    box.appendChild(e);
+    setTimeout(()=>e.remove(),3500);
+  }
+}
+
+function celebrate(){
+  const box=document.getElementById("confetti");
+  for(let i=0;i<140;i++){
+    const e=document.createElement("i");
+    e.className="piece";
+    e.style.left=Math.random()*100+"%";
+    e.style.top=(-20-Math.random()*30)+"px";
+    e.style.background=["#ff4f9a","#9a64ff","#25bde8","#ffd34d","#65d68a","#ff8b5e"][i%6];
+    e.style.animationDelay=Math.random()*1.1+"s";
+    e.style.transform="rotate("+Math.random()*360+"deg)";
+    box.appendChild(e);
+    setTimeout(()=>e.remove(),4500);
+  }
+}
+
+const emojis=["💖","✨","🎀","🌸","💫","💕","🎉","⭐"];
+for(let i=0;i<28;i++){
+  const e=document.createElement("span");
+  e.className="f";
+  e.textContent=emojis[i%emojis.length];
+  e.style.left=Math.random()*100+"%";
+  e.style.animationDuration=(7+Math.random()*8)+"s";
+  e.style.animationDelay=(-Math.random()*12)+"s";
+  e.style.fontSize=(15+Math.random()*17)+"px";
+  document.getElementById("floaters").appendChild(e);
+}
+</script>
+</body>
+</html>
